@@ -35,4 +35,23 @@ schema msmarco {
             expression: bm25(title) + bm25(body) + bm25(url)
         }
     }
+    
+    rank-profile collect_rank_features inherits default {
+        first-phase {
+            expression: bm25(title) + bm25(body) + bm25(url)
+        }
+
+        second-phase {
+            expression: random
+        }
+
+        match-features {
+            bm25(title)
+            bm25(body)
+            bm25(url)
+            nativeRank(title)
+            nativeRank(body)
+            nativeRank(url)
+        }
+    }
 }
