@@ -18,6 +18,7 @@ public class UserProfileSearcher extends Searcher {
 
         // Get tensor and read items from user profile
         Object userIdProperty = query.properties().get("user_id");
+        System.out.println(query.getHits());
         if (userIdProperty != null) {
 
             // Retrieve user embedding by doing a search for the user_id and extract the tensor
@@ -38,8 +39,24 @@ public class UserProfileSearcher extends Searcher {
                 query.getRanking().setProfile("recommendation");
             }
         }
+        // searchしただけだと、idとrelevancyしか取れない
+        // その他フィールドのデータはsearchの後に実行されるfillメソッドで再度検索バックエンドを叩いてデータを取得している
+        Result result = execution.search(query);
+        System.out.println(result.getHitCount());
 
-        return execution.search(query);
+        // ここで明示的にfillした場合は、この後のfillメソッドはignoreされる
+        // ↓標準出力ログで確認できる
+        // {
+        //    "message": "Ignoring fill(null): Hits already filled: result.hits().getFilled()=[null]"
+        // },
+        execution.fill(result);
+
+        // これ以降でセカンドフェーズ処理を行う
+
+        for (Hit hit : result.hits().asList()) {
+            System.out.println(hit.getField("title"));
+        }
+        return result;
     }
 
     private Tensor retrieveUserEmbedding(String userId, Execution execution,Query originalQuery) {
