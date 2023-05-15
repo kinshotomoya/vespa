@@ -27,13 +27,18 @@ schema news {
         }
         field date type int {
             indexing: summary | attribute
-            attribute: fast-search
         }
         field clicks type int {
             indexing: summary | attribute
         }
         field impressions type int {
             indexing: summary | attribute
+        }
+        field embedding type tensor<float>(d0[51]) {
+            indexing: attribute 
+            attribute {
+                distance-metric: euclidean
+            }
         }
     }
 
@@ -47,6 +52,12 @@ schema news {
         }
         first-phase {
             expression: nativeRank(title, abstract) + 10 * popularity
+        }
+    }
+
+    rank-profile recommendation inherits default {
+        first-phase {
+          expression: closeness(field, embedding)
         }
     }
 }
