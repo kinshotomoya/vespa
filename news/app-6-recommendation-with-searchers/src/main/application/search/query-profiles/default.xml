@@ -4,5 +4,6 @@
 <!--vespa query -v 'user_id=U33527' 'trace.level=5'-->
 <!--ただ、searchChainをリクエスト毎に変更したい場合は、このquery-profileをクエリに指定して動的に切り替える-->
 <query-profile id="default" type="root" >
+<!--    ここでどのsearchChainを利用するか指定している-->
     <field name="searchChain">user</field>
 </query-profile>

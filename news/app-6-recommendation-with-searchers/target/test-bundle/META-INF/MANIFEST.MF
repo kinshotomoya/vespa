@@ -7,11 +7,12 @@ Bundle-Name: news-recommendation-searcher
 X-JDisc-Test-Bundle-Version: 1.0
 Bundle-Vendor: Yahoo!
 Bundle-ClassPath: .
-Import-Package: com.yahoo.prelude.query;version="[1.0.0,2)",com.yahoo.se
- arch.query.ranking;version="[1.0.0,2)",com.yahoo.search.query;version="
- [1.0.0,2)",com.yahoo.search.result;version="[1.0.0,2)",com.yahoo.search
- .searchchain;version="[1.0.0,2)",com.yahoo.search;version="[1.0.0,2)",c
- om.yahoo.tensor;version="[1.0.0,2)",java.io;version="[0.0.0,1)",java.la
- ng;version="[0.0.0,1)",java.util;version="[0.0.0,1)"
+Import-Package: com.yahoo.component.chain;version="[1.0.0,2)",com.yahoo.
+ prelude.query;version="[1.0.0,2)",com.yahoo.search.query.ranking;versio
+ n="[1.0.0,2)",com.yahoo.search.query;version="[1.0.0,2)",com.yahoo.sear
+ ch.result;version="[1.0.0,2)",com.yahoo.search.searchchain;version="[1.
+ 0.0,2)",com.yahoo.search;version="[1.0.0,2)",com.yahoo.tensor;version="
+ [1.0.0,2)",java.io;version="[0.0.0,1)",java.lang;version="[0.0.0,1)",ja
+ va.util;version="[0.0.0,1)"
 X-JDisc-Test-Bundle-Categories: 
 

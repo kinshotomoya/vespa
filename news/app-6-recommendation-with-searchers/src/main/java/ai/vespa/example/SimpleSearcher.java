@@ -10,9 +10,9 @@ public class SimpleSearcher extends Searcher {
     @Override
     public Result search(Query query, Execution execution) {
         Result result = execution.search(query);
-        Hit hit = new Hit("hello");
-        hit.setField("message", "hello");
-        result.hits().add(hit);
+//        Hit hit = new Hit("hello");
+//        hit.setField("message", "hello");
+//        result.hits().add(hit);
         return result;
     }
 }
